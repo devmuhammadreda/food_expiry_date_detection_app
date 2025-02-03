@@ -48,5 +48,6 @@ extension CustomList<T> on List<T> {
 const int pageLimit = 10;
 
 class APIKeys {
-  static const String baseUrl = "";
+  static const String baseUrl = "https://world.openfoodfacts.org/api/v0/";
+  static const String productByBarCode = "product/";
 }
