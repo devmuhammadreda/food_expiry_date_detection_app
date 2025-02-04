@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:bot_toast/bot_toast.dart';
 import 'package:food_expiry_date_detection_app/app/routes/app_pages.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/enums/enums.dart';
 import '../../../../core/global/uid.dart';
 import '../../../../core/services/barcode_scanner_service.dart';
+import '../../../../core/services/text_recognizer_service.dart';
 import '../../../data/data_source/product_details_data_source.dart';
 import '../../../data/data_source/scan_log_local_data_source.dart';
 import '../../../data/models/product_model.dart';
@@ -71,6 +75,21 @@ class HomeController extends GetxController {
     } else {
       BotToast.closeAllLoading();
       BotToast.showText(text: "Product not found");
+    }
+  }
+
+  Future<void> pickImageAndScan() async {
+    XFile? image = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (image != null) {
+      var expiryDate =
+          await TextRecognizerService().recognizeExpiryDateFromImage(
+        File(image.path),
+      );
+      if (expiryDate != null) {
+        BotToast.showText(text: expiryDate);
+      } else {
+        BotToast.showText(text: "Expiry date not found");
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_expiry_date_detection_app/app/routes/app_pages.dart';
 import 'package:food_expiry_date_detection_app/app/widgets/progress_button.dart';
 import 'package:get/get.dart';
 import '../../../data/models/scan_log_model.dart';
@@ -22,7 +23,9 @@ class HomeView extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppProgressButton(
-                  onPressed: (anim) {},
+                  onPressed: (anim) {
+                    Get.toNamed(Routes.OCR_SCREEN);
+                  },
                   text: "Scan Image",
                 ),
                 SizedBox(height: 20.sp),
