@@ -8,9 +8,11 @@ class TesseractTextRecognizer extends ITextRecognizer {
   Future<String> processImage(String imgPath) async {
     final res = await FlutterTesseractOcr.extractText(
       imgPath,
+      language: "eng+ara",
       args: {
         "psm": "4",
         "preserve_interword_spaces": "1",
+        "tessdata": "assets/tessdata",
       },
     );
     log(res);
