@@ -28,7 +28,7 @@ enum ScanType {
   barcodeScan,
 }
 
-String? productExpiryStatusToString(ProductExpiryStatus status) {
+String productExpiryStatusToString(ProductExpiryStatus status) {
   switch (status) {
     case ProductExpiryStatus.approachingExpired:
       return 'Approaching expired';
@@ -37,11 +37,11 @@ String? productExpiryStatusToString(ProductExpiryStatus status) {
     case ProductExpiryStatus.safe:
       return 'Safe';
     case ProductExpiryStatus.unknown:
-      return null;
+      return 'Unknown';
   }
 }
 
-Color? productExpiryStatusToColor(ProductExpiryStatus status) {
+Color productExpiryStatusToColor(ProductExpiryStatus status) {
   switch (status) {
     case ProductExpiryStatus.approachingExpired:
       return Colors.yellow;
@@ -50,7 +50,7 @@ Color? productExpiryStatusToColor(ProductExpiryStatus status) {
     case ProductExpiryStatus.safe:
       return Colors.green;
     case ProductExpiryStatus.unknown:
-      return null;
+      return Colors.grey;
   }
 }
 
@@ -73,4 +73,13 @@ ProductExpiryStatus getProductExpiryStatus({required String expiryDate}) {
   }
 
   return ProductExpiryStatus.safe;
+}
+
+String getScanTypeAsString(ScanType scanType) {
+  switch (scanType) {
+    case ScanType.detectImage:
+      return 'Detect Image';
+    case ScanType.barcodeScan:
+      return 'Barcode Scan';
+  }
 }

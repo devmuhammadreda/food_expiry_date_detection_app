@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_expiry_date_detection_app/app/routes/app_pages.dart';
-import 'package:food_expiry_date_detection_app/app/widgets/progress_button.dart';
+import 'package:food_expiry_date_detection_app/core/constants/theme/colors_manager.dart';
 import 'package:get/get.dart';
-import '../../../data/models/scan_log_model.dart';
 import '../controllers/home_controller.dart';
+import '../widgets/scan_log_list_view.dart';
+import '../widgets/tools_buttons_widget.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -13,28 +13,35 @@ class HomeView extends GetView<HomeController> {
     return GetBuilder<HomeController>(
       builder: (controller) {
         return Scaffold(
+          backgroundColor: ColorsManager.primary,
           appBar: AppBar(
-            title: const Text('Food Expiry Date Detection'),
+            title: const Text(
+              'Food Expiry Date Detection',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             centerTitle: true,
+            backgroundColor: ColorsManager.primary,
           ),
-          body: SingleChildScrollView(
-            padding: EdgeInsets.all(20.sp),
+          body: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16.sp),
+                topRight: Radius.circular(16.sp),
+              ),
+            ),
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0.sp,
+              vertical: 20.0.sp,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppProgressButton(
-                  onPressed: (anim) {
-                    Get.toNamed(Routes.OCR_SCREEN);
-                  },
-                  text: "Scan Image",
-                ),
-                SizedBox(height: 20.sp),
-                AppProgressButton(
-                  onPressed: (anim) async {
-                    await controller.scanProductBarcode();
-                  },
-                  text: "Scan Barcode",
-                ),
+                ToolsButtonsWidget(),
                 SizedBox(height: 20.sp),
                 Text(
                   "Recent Scans",
@@ -44,32 +51,7 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 SizedBox(height: 12.sp),
-                StreamBuilder<List<ScanLogModel>>(
-                  stream: controller.getScanLogs,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator.adaptive(),
-                      );
-                    }
-                    if (snapshot.hasData) {
-                      List<ScanLogModel>? logs = snapshot.data;
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: logs?.length,
-                        itemBuilder: (context, index) {
-                          ScanLogModel? log = logs?[index];
-                          return ListTile(
-                            title: Text(log?.productName ?? ''),
-                            subtitle: Text(log?.expiryDate ?? " "),
-                          );
-                        },
-                      );
-                    }
-                    return const SizedBox();
-                  },
-                ),
+                Expanded(child: ScanLogListView()),
               ],
             ),
           ),

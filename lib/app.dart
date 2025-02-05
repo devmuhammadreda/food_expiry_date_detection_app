@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
           getPages: AppPages.routes,
           darkTheme: ThemeManager.darkTheme,
           theme: ThemeManager.lightTheme,
-          themeMode: ThemeMode.system,
-          locale: Get.deviceLocale,
+          themeMode: ThemeMode.light,
+          locale: Locale("en", "US"),
           localizationsDelegates: const [
             ...S.localizationsDelegates,
             common_messages.S.delegate,
