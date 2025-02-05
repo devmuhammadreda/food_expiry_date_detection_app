@@ -92,4 +92,15 @@ class HomeController extends GetxController {
       }
     }
   }
+
+  Future<void> pickImage(ImageSource source) async {
+    final file = await ImagePicker().pickImage(source: source);
+    if (file != null) {
+      Get.back();
+      Get.toNamed(
+        Routes.OCR_SCREEN,
+        arguments: {"image_path": file.path},
+      );
+    }
+  }
 }

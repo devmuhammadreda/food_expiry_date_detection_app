@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
-import '../../../routes/app_pages.dart';
+import '../../../widgets/image_widget.dart';
 import '../controllers/home_controller.dart';
 import 'scan_button.dart';
 
@@ -18,7 +19,15 @@ class ToolsButtonsWidget extends GetView<HomeController> {
           child: ScanButton(
             title: "Scan Image",
             onPressed: () {
-              Get.toNamed(Routes.OCR_SCREEN);
+              showDialog(
+                context: context,
+                builder: (context) => imagePickAlert(
+                  onCameraPressed: () =>
+                      controller.pickImage(ImageSource.camera),
+                  onGalleryPressed: () =>
+                      controller.pickImage(ImageSource.gallery),
+                ),
+              );
             },
           ),
         ),

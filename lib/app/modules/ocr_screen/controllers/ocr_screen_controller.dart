@@ -1,43 +1,37 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/services/flutter_scalable_ocr/flutter_scalable_ocr.dart';
+import '../../../../core/services/recognizer/interface/text_recognizer.dart';
+import '../../../../core/services/recognizer/tesseract_text_recognizer.dart';
+import '../../../data/models/recognition_response.dart';
 
 class OcrScreenController extends GetxController {
-  final StreamController<String> controller = StreamController<String>();
-  bool loading = false;
-  GlobalKey<ScalableOCRState> cameraKey = GlobalKey<ScalableOCRState>();
-
-  void setText(value) {
-    controller.add(value);
-  }
-
+  late ITextRecognizer recognizer;
+  RecognitionResponse? response;
+  String? imagePath;
+  bool isProcessing = false;
   @override
   void onInit() {
-    cameraKey.currentState?.zoomLevel = 0;
+    imagePath = Get.arguments["image_path"];
+    recognizer = TesseractTextRecognizer();
+
     super.onInit();
   }
 
   @override
-  void dispose() {
-    controller.close();
-    super.dispose();
+  void onReady() async {
+    await processImage(imagePath!);
+    super.onReady();
   }
 
-  String? expiryDate;
-  void extractExpiryDate(String text) {
-    // Example regex to find dates (simple format matching)
-    RegExp exp = RegExp(r'\b(\d{1,2})/(\d{2,4})\b');
-    final match = exp.firstMatch(text);
-
-    if (match != null) {
-      // Format found expiry date as MM/YYYY
-      expiryDate = "${match.group(1)}/${match.group(2)}";
-    } else {
-      expiryDate = null;
-    }
-    update(); // Update the UI with the extracted expiry date
+  Future<void> processImage(String imgPath) async {
+    imagePath = imgPath;
+    isProcessing = true;
+    response = null;
+    update();
+    final recognizedText = await recognizer.processImage(imgPath);
+    response =
+        RecognitionResponse(imgPath: imgPath, recognizedText: recognizedText);
+    isProcessing = false;
+    update();
   }
 }
