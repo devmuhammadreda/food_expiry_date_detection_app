@@ -1,4 +1,4 @@
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_barcode_scanner_plus/flutter_barcode_scanner_plus.dart';
 
 class BarcodeScannerService {
   // Scans the barcode and returns the result
