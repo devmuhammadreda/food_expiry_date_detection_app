@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../core/constants/theme/colors_manager.dart';
-import '../../core/constants/theme/styles_manager.dart';
+import '../../core/theme/colors_manager.dart';
+import '../../core/theme/styles_manager.dart';
 
 class CustomTextField extends StatefulWidget {
   final Color? iconColor;

@@ -42,7 +42,6 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.17
-  flutter_tesseract_ocr: ^0.4.28
   freezed_annotation: ^2.4.4
   get: ^4.6.6
   google_fonts: ^6.2.1
@@ -73,8 +72,6 @@ flutter:
   assets:
     - assets/translation/
     - assets/icons/
-    - assets/tessdata/
-    - assets/tessdata_config.json
     - assets/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

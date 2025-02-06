@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../constants/theme/sizes_manager.dart';
+import '../theme/sizes_manager.dart';
 
 /// add Padding Property to widget
 extension WidgetPaddingX on Widget {

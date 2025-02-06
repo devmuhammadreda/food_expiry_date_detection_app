@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_expiry_date_detection_app/core/constants/theme/colors_manager.dart';
+import 'package:food_expiry_date_detection_app/core/theme/colors_manager.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/scan_log_list_view.dart';

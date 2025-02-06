@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/constants/theme/colors_manager.dart';
+import '../../../../core/theme/colors_manager.dart';
 
 class ScanButton extends StatelessWidget {
   const ScanButton({

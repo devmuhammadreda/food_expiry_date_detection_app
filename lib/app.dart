@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:food_expiry_date_detection_app/l10n/messages.dart'
     as common_messages;
 import 'app/routes/app_pages.dart';
-import 'core/constants/theme/theme_manager.dart';
+import 'core/theme/theme_manager.dart';
 import 'core/services/bindings.dart';
 
 class MyApp extends StatelessWidget {

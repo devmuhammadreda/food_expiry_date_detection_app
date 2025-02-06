@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/theme/colors_manager.dart';
+import '../theme/colors_manager.dart';
 
 
 extension DurationExt on int {

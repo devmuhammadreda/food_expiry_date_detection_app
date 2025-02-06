@@ -7,7 +7,7 @@ class MLKitTextRecognizer extends ITextRecognizer {
   late TextRecognizer recognizer;
 
   MLKitTextRecognizer() {
-    recognizer = TextRecognizer();
+    recognizer = TextRecognizer(script: TextRecognitionScript.latin);
   }
 
   void dispose() {

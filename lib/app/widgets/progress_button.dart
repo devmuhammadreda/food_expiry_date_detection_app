@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/constants/theme/colors_manager.dart';
-import '../../core/constants/theme/styles_manager.dart';
+import '../../core/theme/colors_manager.dart';
+import '../../core/theme/styles_manager.dart';
 
 class AppProgressButton extends StatefulWidget {
   final String? text;

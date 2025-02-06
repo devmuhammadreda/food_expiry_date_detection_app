@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../../core/constants/theme/colors_manager.dart';
+import '../../core/theme/colors_manager.dart';
 
 class StarsBar extends StatelessWidget {
   const StarsBar({

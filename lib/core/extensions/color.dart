@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/theme/colors_manager.dart';
+import '../theme/colors_manager.dart';
 extension SuiizColors on Color {
   /// Returns a [MaterialColor] from a [Color] object
   MaterialColor getMaterialColorFromColor() {

@@ -5,6 +5,8 @@ import 'package:food_expiry_date_detection_app/app/widgets/network_image.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/enums/enums.dart';
+import '../../../../core/global/color.dart';
+import '../../../../core/global/strings.dart';
 import '../controllers/product_details_controller.dart';
 
 class ProductDetailsView extends GetView<ProductDetailsController> {

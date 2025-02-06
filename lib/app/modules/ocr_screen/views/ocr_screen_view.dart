@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../core/enums/enums.dart';
 import '../controllers/ocr_screen_controller.dart';
 import '../widgets/image_with_scanning_widget.dart';
 
@@ -16,16 +17,11 @@ class OcrScreenView extends GetView<OcrScreenController> {
       body: GetBuilder<OcrScreenController>(
         builder: (controller) {
           if (controller.imagePath != null) {
-            return Column(
-              children: [
-                ImageWithScanningWidget(
-                  imagePath: controller.imagePath,
-                  isProcessing: controller.isProcessing,
-                ),
-                SizedBox(height: 20),
-                if (controller.response != null)
-                  Text(controller.response?.recognizedText ?? ""),
-              ],
+            return ImageWithScanningWidget(
+              imagePath: controller.imagePath,
+              isProcessing: controller.isProcessing,
+              expiryStatus:
+                  controller.expiryStatus ?? ProductExpiryStatus.unknown,
             );
           } else {
             return SizedBox();
